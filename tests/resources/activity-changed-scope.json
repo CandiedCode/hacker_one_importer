@@ -1,0 +1,68 @@
+{
+  "id": "1337",
+  "type": "activity-changed-scope",
+  "attributes": {
+    "message": "A different scope has added",
+    "created_at": "2016-02-02T04:05:06.000Z",
+    "updated_at": "2016-02-02T04:05:06.000Z",
+    "internal": false
+  },
+  "relationships": {
+    "actor": {
+      "data": {
+        "id": "1337",
+        "type": "user",
+        "attributes": {
+          "username": "api-example",
+          "name": "API Example",
+          "disabled": false,
+          "created_at": "2016-02-02T04:05:06.000Z",
+          "profile_picture": {
+            "62x62": "/assets/avatars/default.png",
+            "82x82": "/assets/avatars/default.png",
+            "110x110": "/assets/avatars/default.png",
+            "260x260": "/assets/avatars/default.png"
+          }
+        }
+      }
+    },
+    "old_scope": {
+      "data": {
+        "id": "1337",
+        "type": "structured_scope",
+        "attributes": {
+          "asset_identifier": "www.example.com",
+          "asset_type": "url",
+          "confidentiality_requirement": null,
+          "integrity_requirement": null,
+          "availability_requirement": null,
+          "max_severity": "critical",
+          "created_at": "2015-02-02T04:05:06.000Z",
+          "updated_at": "2016-05-02T04:05:06.000Z",
+          "instruction": "not eligible for bounty",
+          "eligible_for_bounty": false,
+          "eligible_for_submission": true
+        }
+      }
+    },
+    "new_scope": {
+      "data": {
+        "id": "1338",
+        "type": "structured_scope",
+        "attributes": {
+          "asset_identifier": "api.example.com",
+          "asset_type": "url",
+          "confidentiality_requirement": "high",
+          "integrity_requirement": "high",
+          "availability_requirement": "high",
+          "max_severity": "critical",
+          "created_at": "2015-02-02T04:05:06.000Z",
+          "updated_at": "2016-05-02T04:05:06.000Z",
+          "instruction": null,
+          "eligible_for_bounty": true,
+          "eligible_for_submission": true
+        }
+      }
+    }
+  }
+}

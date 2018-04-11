@@ -1,0 +1,1335 @@
+{
+    "id": "322474",
+    "type": "report",
+    "attributes": {
+        "title": "Backup SQL file lingering on https://ops.playtronics.com/",
+        "state": "triaged",
+        "created_at": "2018-03-05T16:17:42.998Z",
+        "vulnerability_information": "The Playtronics Ops website - `ops.playtronics.com` has a lingering SQL backup file that is\npublicly accessible and downloadable. The file contains a SQL database backup that contains\nprivileged user information and secret keys.\n# Steps to Reproduce\n- Head over to https://ops.playtronics.com/tmp/backup.sql\n- Inspect the raw SQL. E.g. search for `encryption_key` or `password`.\n# PoC\nhttps://ops.playtronics.com/tmp/backup.sql:\n{F269556}\n\n# Remediation\nEnsure the file is removed from the server or protected with a proper authentication mechanism\nthat prevents unprivileged users from accessing this sensitive information.\n\n## Impact\n\nAny customer of Playtronics that has this system will be\nimpacted by this vulnerability. An attacker could easily gain access to whatever they are\ntrying to protect by exploiting this vulnerability.",
+        "triaged_at": "2018-03-13T11:46:35.707Z",
+        "closed_at": null,
+        "last_reporter_activity_at": "2018-03-16T11:45:18.775Z",
+        "first_program_activity_at": "2018-03-05T16:17:43.363Z",
+        "last_program_activity_at": "2018-03-23T08:03:33.051Z",
+        "bounty_awarded_at": null,
+        "swag_awarded_at": null,
+        "disclosed_at": null,
+        "last_public_activity_at": "2018-03-23T08:03:33.051Z",
+        "last_activity_at": "2018-03-23T08:03:33.051Z",
+        "issue_tracker_reference_id": "SI-2",
+        "issue_tracker_reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+    },
+    "relationships": {
+        "reporter": {
+            "data": {
+                "id": "162752",
+                "type": "user",
+                "attributes": {
+                    "username": "mother",
+                    "name": "Mother",
+                    "disabled": false,
+                    "created_at": "2017-04-26T05:07:10.045Z",
+                    "profile_picture": {
+                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                    }
+                }
+            }
+        },
+        "assignee": {
+            "data": {
+                "type": "user",
+                "id": "4954",
+                "attributes": {
+                    "username": "demo-member",
+                    "name": "Demo Member",
+                    "disabled": false,
+                    "created_at": "2014-04-14T11:45:00.949Z",
+                    "profile_picture": {
+                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456",
+                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456",
+                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456",
+                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"
+                    }
+                }
+            }
+        },
+        "program": {
+            "data": {
+                "id": "26504",
+                "type": "program",
+                "attributes": {
+                    "handle": "candiedcode_v2",
+                    "created_at": "2018-02-26T02:35:44.582Z",
+                    "updated_at": "2018-03-13T11:17:52.883Z"
+                }
+            }
+        },
+        "severity": {
+            "data": {
+                "id": "125462",
+                "type": "severity",
+                "attributes": {
+                    "rating": "critical",
+                    "author_type": "User",
+                    "user_id": 162752,
+                    "created_at": "2018-03-05T16:17:43.170Z",
+                    "score": 10,
+                    "attack_complexity": "low",
+                    "attack_vector": "network",
+                    "availability": "none",
+                    "confidentiality": "high",
+                    "integrity": "high",
+                    "privileges_required": "none",
+                    "user_interaction": "none",
+                    "scope": "changed"
+                }
+            }
+        },
+        "swag": {
+            "data": []
+        },
+        "attachments": {
+            "data": [
+                {
+                    "id": "269556",
+                    "type": "attachment",
+                    "attributes": {
+                        "expiring_url": "https://hackerone-attachments.s3.amazonaws.com/production/000/269/556/b3821d8941c70f0334cd030f3dd0500221fc6f28/backup-sql-inspect.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAI46SINF75LTLUQTQ%2F20180323%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20180323T080342Z&X-Amz-Expires=3600&X-Amz-Security-Token=FQoDYXdzECkaDNFeSwAQEBMfCYiJ2yK3A29eWpOQ4h4h5yLBsKny63LBJSwVGXwzWfMlBVXB0QJnuq8JTspCoYQuuVZ0JQY6BgV89O%2FteCxu35qNbhHgcyu6hb2uuBWdLlsUuGmZZsd1wKL%2BmS0nZ6z%2FbUTOi5Oo%2FkXa2Ziz%2FrtpTzNVVEVY52ZS0eiPF6YfvKeCffyKJFPLnV7kfRjBXdy7eJJeMLO%2FC%2FvG15uur47Oj8SzhcZzIyC8NWSpqFWCn0VXJJlVmdhJfrRUapVwcdFwEEbv9GzY5XT9SzM5Pn4n0T1NPSthgHMdMBm9xHQHYR3IRX1JmEH0lTsDWVnQzGju6V4vZG%2Fc4ceu%2FvvYlqDjCU4k%2BTjlB98FL98Hbe1MTCLKvscwZtep3UNrZ8yCchjM2CVGak0CQEkgqGsnIow%2FPAtV3iferc7cR1xOFHao2qz7icU85QVvADvFZ7xDk9Gz26pLNKZwmEkGo7ehrjWIEg31E4SVQVS1mWf%2BGNf73EVsxfuOULNB9q%2B09uEN7nFQnX%2FkQoVLwJt4SWSx3eKf%2BG2yaFKm2OEyGDGVMEGo9G6M4TPNha0SzeiFIx%2Ftxnjd%2B3IMT4A%2BwRmIHEvonbYom97S1QU%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=76b228763214cbbad6b552a0df50b5881567cf0f37dcc469a9c09f638ca91000",
+                        "created_at": "2018-03-05T16:17:41.888Z",
+                        "file_name": "backup-sql-inspect.png",
+                        "content_type": "image/png",
+                        "file_size": 199925
+                    }
+                }
+            ]
+        },
+        "weakness": {
+            "data": {
+                "id": "18",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Information Disclosure",
+                    "description": "An information disclosure is the intentional or unintentional disclosure of information to an actor that is not explicitly authorized to have access to that information.",
+                    "external_id": "cwe-200",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            }
+        },
+        "structured_scope": {
+            "data": {
+                "id": "6633",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.playtronics.PlayTronicsStore",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": null,
+                    "max_severity": "critical",
+                    "created_at": "2018-03-05T16:17:00.031Z",
+                    "updated_at": "2018-03-05T16:17:00.082Z",
+                    "reference": null
+                }
+            }
+        },
+        "activities": {
+            "data": [
+                {
+                    "type": "activity-changed-scope",
+                    "id": "2522067",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-23T08:03:33.051Z",
+                        "updated_at": "2018-03-23T08:03:33.051Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        },
+                        "old_scope": {
+                            "data": {
+                                "id": "6631",
+                                "type": "structured-scope",
+                                "attributes": {
+                                    "asset_type": "URL",
+                                    "asset_identifier": "*.playtronics.com",
+                                    "eligible_for_bounty": false,
+                                    "eligible_for_submission": true,
+                                    "instruction": null,
+                                    "max_severity": "critical",
+                                    "created_at": "2018-03-05T16:16:59.793Z",
+                                    "updated_at": "2018-03-05T16:16:59.847Z",
+                                    "reference": null
+                                }
+                            }
+                        },
+                        "new_scope": {
+                            "data": {
+                                "id": "6633",
+                                "type": "structured-scope",
+                                "attributes": {
+                                    "asset_type": "APPLE_STORE_APP_ID",
+                                    "asset_identifier": "com.playtronics.PlayTronicsStore",
+                                    "eligible_for_bounty": false,
+                                    "eligible_for_submission": true,
+                                    "instruction": null,
+                                    "max_severity": "critical",
+                                    "created_at": "2018-03-05T16:17:00.031Z",
+                                    "updated_at": "2018-03-05T16:17:00.082Z",
+                                    "reference": null
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2510180",
+                    "attributes": {
+                        "message": "Adding attachment",
+                        "created_at": "2018-03-20T12:41:08.515Z",
+                        "updated_at": "2018-03-20T12:41:08.515Z",
+                        "internal": true
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        },
+                        "attachments": {
+                            "data": [
+                                {
+                                    "id": "273856",
+                                    "type": "attachment",
+                                    "attributes": {
+                                        "expiring_url": "https://hackerone-attachments.s3.amazonaws.com/production/000/273/856/04f8779c7c1db755eb267c351a4dd0e4e5081b53/giphy.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAI46SINF75LTLUQTQ%2F20180323%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20180323T080342Z&X-Amz-Expires=3600&X-Amz-Security-Token=FQoDYXdzECkaDNFeSwAQEBMfCYiJ2yK3A29eWpOQ4h4h5yLBsKny63LBJSwVGXwzWfMlBVXB0QJnuq8JTspCoYQuuVZ0JQY6BgV89O%2FteCxu35qNbhHgcyu6hb2uuBWdLlsUuGmZZsd1wKL%2BmS0nZ6z%2FbUTOi5Oo%2FkXa2Ziz%2FrtpTzNVVEVY52ZS0eiPF6YfvKeCffyKJFPLnV7kfRjBXdy7eJJeMLO%2FC%2FvG15uur47Oj8SzhcZzIyC8NWSpqFWCn0VXJJlVmdhJfrRUapVwcdFwEEbv9GzY5XT9SzM5Pn4n0T1NPSthgHMdMBm9xHQHYR3IRX1JmEH0lTsDWVnQzGju6V4vZG%2Fc4ceu%2FvvYlqDjCU4k%2BTjlB98FL98Hbe1MTCLKvscwZtep3UNrZ8yCchjM2CVGak0CQEkgqGsnIow%2FPAtV3iferc7cR1xOFHao2qz7icU85QVvADvFZ7xDk9Gz26pLNKZwmEkGo7ehrjWIEg31E4SVQVS1mWf%2BGNf73EVsxfuOULNB9q%2B09uEN7nFQnX%2FkQoVLwJt4SWSx3eKf%2BG2yaFKm2OEyGDGVMEGo9G6M4TPNha0SzeiFIx%2Ftxnjd%2B3IMT4A%2BwRmIHEvonbYom97S1QU%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=1bc7be0fb605217b22efa2fd42a4062c63f28a4d7718f49aae8430f8e7dea823",
+                                        "created_at": "2018-03-20T12:41:01.461Z",
+                                        "file_name": "giphy.gif",
+                                        "content_type": "image/gif",
+                                        "file_size": 1760287
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2509885",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-20T11:25:13.097Z",
+                        "updated_at": "2018-03-20T11:25:13.097Z",
+                        "internal": true,
+                        "reference": "SI-2",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2507521",
+                    "attributes": {
+                        "message": "test",
+                        "created_at": "2018-03-19T20:49:22.147Z",
+                        "updated_at": "2018-03-19T20:49:22.147Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-cve-id-added",
+                    "id": "2507463",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-19T20:25:11.847Z",
+                        "updated_at": "2018-03-19T20:25:11.847Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507462",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-19T20:25:11.776Z",
+                        "updated_at": "2018-03-19T20:25:11.776Z",
+                        "internal": true,
+                        "reference": "",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507459",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-19T20:25:01.258Z",
+                        "updated_at": "2018-03-19T20:25:01.258Z",
+                        "internal": true,
+                        "reference": "",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507458",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-19T20:24:38.559Z",
+                        "updated_at": "2018-03-19T20:24:38.559Z",
+                        "internal": true,
+                        "reference": "",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507415",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T20:08:44.161Z",
+                        "updated_at": "2018-03-19T20:08:44.161Z",
+                        "internal": true,
+                        "reference": "H12-125",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507354",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T19:44:03.169Z",
+                        "updated_at": "2018-03-19T19:44:03.169Z",
+                        "internal": true,
+                        "reference": "H12-124",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507351",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T19:41:26.699Z",
+                        "updated_at": "2018-03-19T19:41:26.699Z",
+                        "internal": true,
+                        "reference": "H12-121",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507345",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T19:39:00.377Z",
+                        "updated_at": "2018-03-19T19:39:00.377Z",
+                        "internal": true,
+                        "reference": "H12-119",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507338",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T19:37:24.317Z",
+                        "updated_at": "2018-03-19T19:37:24.317Z",
+                        "internal": true,
+                        "reference": "H12-117",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507275",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T19:19:38.266Z",
+                        "updated_at": "2018-03-19T19:19:38.266Z",
+                        "internal": true,
+                        "reference": "H12-111",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2507220",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T19:15:30.806Z",
+                        "updated_at": "2018-03-19T19:15:30.806Z",
+                        "internal": true,
+                        "reference": "H12-29",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2506870",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T17:57:05.274Z",
+                        "updated_at": "2018-03-19T17:57:05.274Z",
+                        "internal": true,
+                        "reference": "H12-25",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2506864",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T17:53:57.655Z",
+                        "updated_at": "2018-03-19T17:53:57.655Z",
+                        "internal": true,
+                        "reference": "H12-23",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2506595",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T16:26:03.852Z",
+                        "updated_at": "2018-03-19T16:26:03.852Z",
+                        "internal": true,
+                        "reference": "H12-19",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2506592",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T16:22:49.669Z",
+                        "updated_at": "2018-03-19T16:22:49.669Z",
+                        "internal": true,
+                        "reference": "H12-17",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2506591",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T16:22:11.419Z",
+                        "updated_at": "2018-03-19T16:22:11.419Z",
+                        "internal": true,
+                        "reference": "H12-15",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2504138",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-19T01:05:35.509Z",
+                        "updated_at": "2018-03-19T01:05:35.509Z",
+                        "internal": true,
+                        "reference": "H12-14",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2498862",
+                    "attributes": {
+                        "message": "Hey, it's been a while since there has been any activity on this report. Any updates?\n",
+                        "created_at": "2018-03-16T11:45:18.775Z",
+                        "updated_at": "2018-03-16T11:45:18.775Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "162752",
+                                "attributes": {
+                                    "username": "mother",
+                                    "name": "Mother",
+                                    "disabled": false,
+                                    "created_at": "2017-04-26T05:07:10.045Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-bug-triaged",
+                    "id": "2487729",
+                    "attributes": {
+                        "message": "updating state to triaged",
+                        "created_at": "2018-03-13T11:46:35.707Z",
+                        "updated_at": "2018-03-13T11:46:35.707Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2487727",
+                    "attributes": {
+                        "message": "Hello there, any updates on this issue?\n",
+                        "created_at": "2018-03-13T11:46:04.976Z",
+                        "updated_at": "2018-03-13T11:46:04.976Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "162752",
+                                "attributes": {
+                                    "username": "mother",
+                                    "name": "Mother",
+                                    "disabled": false,
+                                    "created_at": "2017-04-26T05:07:10.045Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-bug-new",
+                    "id": "2487726",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-13T11:46:04.889Z",
+                        "updated_at": "2018-03-13T11:46:04.889Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-bug-triaged",
+                    "id": "2487721",
+                    "attributes": {
+                        "message": "Test",
+                        "created_at": "2018-03-13T11:44:59.193Z",
+                        "updated_at": "2018-03-13T11:44:59.193Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2487668",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-13T11:30:40.447Z",
+                        "updated_at": "2018-03-13T11:30:40.447Z",
+                        "internal": true,
+                        "reference": "H1-15",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-reference-id-added",
+                    "id": "2487583",
+                    "attributes": {
+                        "message": "creating jira issue",
+                        "created_at": "2018-03-13T11:08:34.082Z",
+                        "updated_at": "2018-03-13T11:08:34.082Z",
+                        "internal": true,
+                        "reference": "H1-11",
+                        "reference_url": "https://hackerone-jira.atlassian.net/browse/SI-2"
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "247279",
+                                "attributes": {
+                                    "username": "candiedcode_jira",
+                                    "name": null,
+                                    "disabled": false,
+                                    "created_at": "2018-03-03T10:34:23.731Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2482617",
+                    "attributes": {
+                        "message": "Hello there, any updates on this issue?\n",
+                        "created_at": "2018-03-12T13:00:34.165Z",
+                        "updated_at": "2018-03-12T13:00:34.165Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "162752",
+                                "attributes": {
+                                    "username": "mother",
+                                    "name": "Mother",
+                                    "disabled": false,
+                                    "created_at": "2017-04-26T05:07:10.045Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-bug-new",
+                    "id": "2482616",
+                    "attributes": {
+                        "message": "More information? Simple. The answer is 42.\n",
+                        "created_at": "2018-03-12T13:00:34.068Z",
+                        "updated_at": "2018-03-12T13:00:34.068Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "162752",
+                                "attributes": {
+                                    "username": "mother",
+                                    "name": "Mother",
+                                    "disabled": false,
+                                    "created_at": "2017-04-26T05:07:10.045Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-bug-needs-more-info",
+                    "id": "2482615",
+                    "attributes": {
+                        "message": "",
+                        "created_at": "2018-03-12T13:00:33.774Z",
+                        "updated_at": "2018-03-12T13:00:33.774Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "245280",
+                                "attributes": {
+                                    "username": "qa_candiedcode",
+                                    "name": "Jennifer Cwagenberg",
+                                    "disabled": false,
+                                    "created_at": "2018-02-26T02:35:43.696Z",
+                                    "profile_picture": {
+                                        "62x62": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "82x82": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "110x110": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png",
+                                        "260x260": "/assets/avatars/default-71a302d706457f3d3a31eb30fa3e73e6cf0b1d677b8fa218eaeaffd67ae97918.png"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2474170",
+                    "attributes": {
+                        "message": "Hey, it's been a while since there has been any activity on this report. Any updates?\n",
+                        "created_at": "2018-03-08T16:17:59.259Z",
+                        "updated_at": "2018-03-08T16:17:59.259Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "162752",
+                                "attributes": {
+                                    "username": "mother",
+                                    "name": "Mother",
+                                    "disabled": false,
+                                    "created_at": "2017-04-26T05:07:10.045Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-comment",
+                    "id": "2474169",
+                    "attributes": {
+                        "message": "Hey, it's been a while since there has been any activity on this report. Any updates?\n",
+                        "created_at": "2018-03-08T16:17:59.234Z",
+                        "updated_at": "2018-03-08T16:17:59.234Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "162752",
+                                "attributes": {
+                                    "username": "mother",
+                                    "name": "Mother",
+                                    "disabled": false,
+                                    "created_at": "2017-04-26T05:07:10.045Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/162/752/88b8818f20e11470d7cacfac933ec1ea271aa8c2_small.jpg?1493234612",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/162/752/4125064b5e17acf7aa12fa0a62299b04b200cf5f_medium.jpg?1493234612",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/162/752/6694053ef9ca6c9b11a1acaf7d931602716807fd_large.jpg?1493234612",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/162/752/00d0f6688e4b16060f24e68b56d262a88e0d8e7d_xtralarge.jpg?1493234612"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-user-assigned-to-bug",
+                    "id": "2460216",
+                    "attributes": {
+                        "message": "Hi @demo-member, I have successfully reproduced this issue and confirmed it is in scope for the program. I wrote a quick summary of the issue that you can find up top. Please escalate internally accordingly and let me know if you have any questions.",
+                        "created_at": "2018-03-05T16:17:43.559Z",
+                        "updated_at": "2018-03-05T16:17:43.559Z",
+                        "internal": true
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "165386",
+                                "attributes": {
+                                    "username": "demo-triager",
+                                    "name": "Demo Triager",
+                                    "disabled": false,
+                                    "created_at": "2017-05-05T19:15:09.052Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/165/386/b8009c8e1aa3171b596de797bcaa7ba5defa5dfc_small.jpg?1494011777",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/165/386/f9163f642b19887dfd2e22bd06f5ffce6421a753_medium.jpg?1494011777",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/165/386/98b5bcf86da2fb02aa5c6aaf53cdaab89e900935_large.jpg?1494011777",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/165/386/3d33e8cc0e75d1560b213345f65911c49f3b15e6_xtralarge.jpg?1494011777"
+                                    }
+                                }
+                            }
+                        },
+                        "assigned_user": {
+                            "data": {
+                                "id": "4954",
+                                "type": "user",
+                                "attributes": {
+                                    "username": "demo-member",
+                                    "name": "Demo Member",
+                                    "disabled": false,
+                                    "created_at": "2014-04-14T11:45:00.949Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "activity-bug-triaged",
+                    "id": "2460215",
+                    "attributes": {
+                        "message": "Hi @mother, thank you for submitting a report to our program! I was able to reproduce the behavior you are describing and can confirm it is in scope as per the rules of our program. The report will now be escalated to the team. If the team has any follow up questions or requests, they will reply directly to you here. Thanks again!",
+                        "created_at": "2018-03-05T16:17:43.363Z",
+                        "updated_at": "2018-03-05T16:17:43.363Z",
+                        "internal": false
+                    },
+                    "relationships": {
+                        "actor": {
+                            "data": {
+                                "type": "user",
+                                "id": "165386",
+                                "attributes": {
+                                    "username": "demo-triager",
+                                    "name": "Demo Triager",
+                                    "disabled": false,
+                                    "created_at": "2017-05-05T19:15:09.052Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/165/386/b8009c8e1aa3171b596de797bcaa7ba5defa5dfc_small.jpg?1494011777",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/165/386/f9163f642b19887dfd2e22bd06f5ffce6421a753_medium.jpg?1494011777",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/165/386/98b5bcf86da2fb02aa5c6aaf53cdaab89e900935_large.jpg?1494011777",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/165/386/3d33e8cc0e75d1560b213345f65911c49f3b15e6_xtralarge.jpg?1494011777"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "bounties": {
+            "data": []
+        },
+        "summaries": {
+            "data": [
+                {
+                    "id": "6791",
+                    "type": "report-summary",
+                    "attributes": {
+                        "content": "ops.playtronics.com is serving a publicly accessible SQL file that appears to be a backup copy of the database. This file contains highly sensitive information about Playtronics users, such as password hashes and unencrypted API keys.  test",
+                        "category": "team",
+                        "created_at": "2018-03-05T16:17:43.816Z",
+                        "updated_at": "2018-03-20T19:24:19.140Z"
+                    },
+                    "relationships": {
+                        "user": {
+                            "data": {
+                                "id": "4954",
+                                "type": "user",
+                                "attributes": {
+                                    "username": "demo-member",
+                                    "name": "Demo Member",
+                                    "disabled": false,
+                                    "created_at": "2014-04-14T11:45:00.949Z",
+                                    "profile_picture": {
+                                        "62x62": "https://profile-photos.hackerone-user-content.com/production/000/004/954/76e628d12eaacde79878b890df02c065f740b1a4_small.png?1423472456",
+                                        "82x82": "https://profile-photos.hackerone-user-content.com/production/000/004/954/75e4cf2599f591e618646429db57d986e496ccee_medium.png?1423472456",
+                                        "110x110": "https://profile-photos.hackerone-user-content.com/production/000/004/954/25f5c8af70323cacb2c2ffa17d68cac2500dc410_large.png?1423472456",
+                                        "260x260": "https://profile-photos.hackerone-user-content.com/production/000/004/954/d903c042cdc7798ad76684563624ee7ea071aed8_xtralarge.png?1423472456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

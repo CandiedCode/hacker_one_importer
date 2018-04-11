@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  importer:
+    image: python:3.6-stretch
+    stdin_open: true
+    tty: true
+    depends_on:
+      - dynamodb
+    environment:
+      - PYTHONDONTWRITEBYTECODE=true
+      - environment=development
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+    working_dir: /usr/src/app
+    volumes:
+      - ..:/usr/src/app
+      - ~/.aws/:/root/.aws/
+      - importer-python:/usr/local/lib/python3.6/site-packages
+    entrypoint: ./development/entrypoint.sh
+    command: /bin/sh
+  dynamodb:
+    build:
+      context: .
+      dockerfile: Dockerfile.dynamo
+    volumes:
+      - dynamodb-data:/var/dynamodb_local
+    ports:
+      - 8000:8000
+volumes:
+  importer-python:
+  dynamodb-data:

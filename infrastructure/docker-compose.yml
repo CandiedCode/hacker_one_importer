@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  jira-terraform:
+    build: .
+    stdin_open: true
+    tty: true
+    working_dir: /infrastructure
+    environment:
+      - PYTHONDONTWRITEBYTECODE=true
+      - environment=development
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+    volumes:
+      - .:/infrastructure/
+      - ~/.aws/:/root/.aws/
+    entrypoint: ""
+    command: ./setup_infrastructure.sh
