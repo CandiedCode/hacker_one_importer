@@ -25,7 +25,7 @@
 .PHONY: build-docker, push, develop, develop-down, setup-terraform, docker-login
 
 DOCKERTAG ?= $(shell git rev-parse --short HEAD)
-AWS_ECR_REPO="072502627258.dkr.ecr.us-east-1.amazonaws.com/jira_importer"
+AWS_ECR_REPO ?= $(shell aws ecr describe-repositories --query "repositories[?repositoryName=='jira_importer'].repositoryUri" --output text)
 
 build-docker:
 	${INFO} "Building hacker_one_importer Image $(DOCKERTAG)"
@@ -49,6 +49,9 @@ setup-terraform:
 
 docker-login:
 	aws ecr get-login --no-include-email --region us-east-1 | bash 2> /dev/null
+
+aws-ecr:
+	${INFO} $(AWS_ECR_REPO)
 
 
 
