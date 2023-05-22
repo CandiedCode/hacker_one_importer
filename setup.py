@@ -17,7 +17,7 @@ setup(name='hacker_one_importer',
           'h1==1.4.2',
           'jira==1.0.14',
           'colorlog==3.1.2',
-          'requests==2.10.0',
+          'requests==2.31.0',
           'click==6.7',
           'six==1.11.0'
       ],
